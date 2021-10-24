@@ -285,10 +285,18 @@ def download_the_mpycrosses():
             fstats = os.stat(cross_file)
             os.chmod(cross_file, fstats.st_mode | stat.S_IEXEC)
 
+def compile_py_to_mpy(lib_file,cross):
+    """Compile with cross-mpy and delete py file"""
+    print(lib_file)
+    mpy_file = lib_file.replace(".py", ".mpy")
+    subprocess.call([cross, lib_file, "-o", mpy_file])
+    os.unlink(lib_file)
+
+
 def make_the_mpy_bundles():
     """Create the mpy bundle(s) directory(ies) and mpy-cross the modules."""
-    # copy for the zips
-    shutil.copy(BUNDLE_JSON, fmt(BUNDLE_ZIP_JSON))
+    # copy for the zips - Commented out as we don't have the json files created...
+    # shutil.copy(BUNDLE_JSON, fmt(BUNDLE_ZIP_JSON))
 
     # duplicate the py dir to mpy6 and mpy7
     pwd = os.getcwd()
@@ -303,11 +311,7 @@ def make_the_mpy_bundles():
         # run mpy-cross in each of those
         os.chdir(lib_dir)
         for lib_file in glob.glob(os.path.join("*.py")):
-            print(lib_file)
-            mpy_file = lib_file.replace(".py", ".mpy")
-            subprocess.call([cross, lib_file, "-o", mpy_file])
-            print(mpy_file)
-            os.unlink(lib_file)
+            compile_py_to_mpy(lib_file,cross)
         os.chdir(pwd)
 
 
