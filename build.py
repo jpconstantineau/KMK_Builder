@@ -68,7 +68,7 @@ BUNDLE_LIB_DIR = os.path.join(BUNDLE_DIR, "lib")
 BUNDLE_REQ_DIR = os.path.join(BUNDLE_DIR.format(platform="py"), "requirements")
 BUNDLE_ZIP_JSON = os.path.join(BUNDLE_DIR.format(platform="py"), f"{BUNDLE_NAME}.json")
 # where the modules are
-MODULES_DIR = "kmk_firmware/kmk/"
+MODULES_DIR = "kmk_firmware/kmk/modules"
 # the base requirement file
 REQUIREMENTS_FILE = "requirements-modules.txt"
 # in-file informations to update (or not)
@@ -323,6 +323,6 @@ def do_the_zips():
 
 if __name__ == "__main__":
     init_directories()
-    # make_bundle_files()
-    # make_the_mpy_bundles()
-    # do_the_zips()
+    make_bundle_files()
+    make_the_mpy_bundles()
+    do_the_zips()
