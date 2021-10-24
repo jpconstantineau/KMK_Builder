@@ -204,14 +204,14 @@ def make_bundle_files():
     # copy all the layouts and keycodes
     for mdir in glob.glob(MODULES_DIR):
         shutil.copytree(mdir, fmt(BUNDLE_LIB_DIR), dirs_exist_ok=True)
-    """
+    
     module_versions = {}
     # change the version number of all the bundles
     for module_local in glob.glob(MODULES_DIR + "*"):
         module_name = os.path.basename(module_local).replace(".py","")
         module_base = os.path.dirname(module_local)
         if os.path.isdir(module_local):
-            raise OSError("Package modules not implemented yet.")
+            # raise OSError("Package modules not implemented yet.")
             # get all versions
             versions = []
             for sub_module in list_all_files(module_local):
@@ -238,7 +238,7 @@ def make_bundle_files():
         for mod in glob.glob(MODULES_DIR + "*")
         if not mod.startswith(".")
     ]
-
+    """
     json_data = {}
 
     for module in all_modules:
