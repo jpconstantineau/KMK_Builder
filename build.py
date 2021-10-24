@@ -331,4 +331,4 @@ if __name__ == "__main__":
     download_the_mpycrosses()
     make_bundle_files()
     make_the_mpy_bundles()
-    # do_the_zips()
+    do_the_zips()
