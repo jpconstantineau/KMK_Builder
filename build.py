@@ -204,7 +204,7 @@ def make_bundle_files():
     # copy all the layouts and keycodes
     for mdir in glob.glob(MODULES_DIR):
         shutil.copytree(mdir, fmt(BUNDLE_LIB_DIR), dirs_exist_ok=True)
-
+    """
     module_versions = {}
     # change the version number of all the bundles
     for module_local in glob.glob(MODULES_DIR + "*"):
@@ -269,12 +269,13 @@ def make_bundle_files():
     # create the json file
     with open(BUNDLE_JSON, "w") as out_file:
         json.dump(json_data, out_file, indent=2)
+    """
 
 
 def make_the_mpy_bundles():
     """Create the mpy bundle(s) directory(ies) and mpy-cross the modules."""
     # copy for the zips
-    shutil.copy(BUNDLE_JSON, fmt(BUNDLE_ZIP_JSON))
+    # shutil.copy(BUNDLE_JSON, fmt(BUNDLE_ZIP_JSON))
 
     # download the mpycrosses
     for cross in MPYCROSS:
@@ -323,6 +324,6 @@ def do_the_zips():
 
 if __name__ == "__main__":
     init_directories()
-    make_bundle_files()
+    # make_bundle_files()
     make_the_mpy_bundles()
-    do_the_zips()
+    # do_the_zips()
