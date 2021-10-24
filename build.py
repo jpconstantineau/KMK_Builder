@@ -68,7 +68,7 @@ BUNDLE_LIB_DIR = os.path.join(BUNDLE_DIR, "lib")
 BUNDLE_REQ_DIR = os.path.join(BUNDLE_DIR.format(platform="py"), "requirements")
 BUNDLE_ZIP_JSON = os.path.join(BUNDLE_DIR.format(platform="py"), f"{BUNDLE_NAME}.json")
 # where the modules are
-MODULES_DIR = "kmk_firmware/kmk/modules"
+MODULES_DIR = "kmk_firmware/kmk/*/"
 # the base requirement file
 REQUIREMENTS_FILE = "requirements-modules.txt"
 # in-file informations to update (or not)
