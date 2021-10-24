@@ -295,6 +295,8 @@ def make_the_mpy_bundles():
         cross = os.path.abspath(cross)
         bun_dir = BUNDLE_DIR.format(platform=PLATFORM_NAMES[platform])
         lib_dir = BUNDLE_LIB_DIR.format(platform=PLATFORM_NAMES[platform])
+        print(BUNDLE_DIR)
+        print(bun_dir)
         shutil.copytree(fmt(BUNDLE_DIR), bun_dir)
         # run mpy-cross in each of those
         os.chdir(lib_dir)
@@ -325,6 +327,6 @@ def do_the_zips():
 if __name__ == "__main__":
     init_directories()
     download_the_mpycrosses()
-    # make_bundle_files()
+    make_bundle_files()
     # make_the_mpy_bundles()
     # do_the_zips()
