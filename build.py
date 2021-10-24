@@ -301,8 +301,10 @@ def make_the_mpy_bundles():
         # run mpy-cross in each of those
         os.chdir(lib_dir)
         for lib_file in glob.glob(os.path.join("*.py")):
+            print(lib_file)
             mpy_file = lib_file.replace(".py", ".mpy")
             subprocess.call([cross, lib_file, "-o", mpy_file])
+            print(mpy_file)
             os.unlink(lib_file)
         os.chdir(pwd)
 
@@ -328,5 +330,5 @@ if __name__ == "__main__":
     init_directories()
     download_the_mpycrosses()
     make_bundle_files()
-    # make_the_mpy_bundles()
+    make_the_mpy_bundles()
     # do_the_zips()
