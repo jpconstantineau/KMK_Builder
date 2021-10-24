@@ -271,12 +271,7 @@ def make_bundle_files():
         json.dump(json_data, out_file, indent=2)
     """
 
-
-def make_the_mpy_bundles():
-    """Create the mpy bundle(s) directory(ies) and mpy-cross the modules."""
-    # copy for the zips
-    # shutil.copy(BUNDLE_JSON, fmt(BUNDLE_ZIP_JSON))
-
+def download_the_mpycrosses():
     # download the mpycrosses
     for cross in MPYCROSS:
         cross_file = os.path.join(BUILD_DEPS, MPYCROSS[cross])
@@ -287,6 +282,11 @@ def make_the_mpy_bundles():
                 cross_fp.write(response.content)
             fstats = os.stat(cross_file)
             os.chmod(cross_file, fstats.st_mode | stat.S_IEXEC)
+
+def make_the_mpy_bundles():
+    """Create the mpy bundle(s) directory(ies) and mpy-cross the modules."""
+    # copy for the zips
+    # shutil.copy(BUNDLE_JSON, fmt(BUNDLE_ZIP_JSON))
 
     # duplicate the py dir to mpy6 and mpy7
     pwd = os.getcwd()
@@ -324,6 +324,7 @@ def do_the_zips():
 
 if __name__ == "__main__":
     init_directories()
+    download_the_mpycrosses()
     # make_bundle_files()
-    make_the_mpy_bundles()
+    # make_the_mpy_bundles()
     # do_the_zips()
