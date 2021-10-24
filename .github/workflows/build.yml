@@ -26,10 +26,11 @@ jobs:
     - name: Library version
       run: |
         git describe --dirty --always --tags
-    - name: dir lib
-      run: |
-        ls -R
     - name: Build assets
       run: |
         python3 build.py
-        ls -R
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        path: "_build/release"
+        name: kmk_build
