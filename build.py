@@ -63,7 +63,7 @@ BUNDLE_JSON = os.path.join(BUILD_RELEASE, f"{BUNDLE_NAME}-{TAG}.json")
 BUNDLE_PATH_NAME = f"{BUNDLE_NAME}-{{platform}}-{TAG}"
 BUNDLE_DIR = os.path.join(BUILD_DIR, BUNDLE_PATH_NAME)
 BUNDLE_ZIP = os.path.join(BUILD_RELEASE, BUNDLE_PATH_NAME + ".zip")
-BUNDLE_LIB_DIR = os.path.join(BUNDLE_DIR, "lib")
+BUNDLE_LIB_DIR = os.path.join(BUNDLE_DIR, "kmk")
 # py platform directory
 BUNDLE_REQ_DIR = os.path.join(BUNDLE_DIR.format(platform="py"), "requirements")
 BUNDLE_ZIP_JSON = os.path.join(BUNDLE_DIR.format(platform="py"), f"{BUNDLE_NAME}.json")
