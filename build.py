@@ -323,6 +323,6 @@ def do_the_zips():
 
 if __name__ == "__main__":
     init_directories()
-    make_bundle_files()
-    make_the_mpy_bundles()
-    do_the_zips()
+    # make_bundle_files()
+    # make_the_mpy_bundles()
+    # do_the_zips()

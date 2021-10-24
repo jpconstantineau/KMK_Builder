@@ -32,3 +32,4 @@ jobs:
     - name: Build assets
       run: |
         python3 build.py
+        ls -R
