@@ -292,6 +292,19 @@ def compile_py_to_mpy(lib_file,cross):
     subprocess.call([cross, lib_file, "-o", mpy_file])
     os.unlink(lib_file)
 
+def process_dir_and_compile(lib_dir,cross):
+    pwd = os.getcwd()
+    os.chdir(lib_dir)
+    for lib_file in glob.glob(os.path.join("*")):
+        if lib_file.endswith(".py"):
+            compile_py_to_mpy(lib_file,cross)
+        elif os.path.isdir(lib_file):
+            process_dir_and_compile(lib_file,cross)
+    os.chdir(pwd)
+
+#for module_local in glob.glob(MODULES_DIR + "*"):
+#if os.path.isdir(module_local):
+#elif module_local.endswith(".py"):
 
 def make_the_mpy_bundles():
     """Create the mpy bundle(s) directory(ies) and mpy-cross the modules."""
@@ -309,9 +322,7 @@ def make_the_mpy_bundles():
         print(bun_dir)
         shutil.copytree(fmt(BUNDLE_DIR), bun_dir)
         # run mpy-cross in each of those
-        os.chdir(lib_dir)
-        for lib_file in glob.glob(os.path.join("*.py")):
-            compile_py_to_mpy(lib_file,cross)
+        process_dir_and_compile(lib_dir,cross)
         os.chdir(pwd)
 
 
