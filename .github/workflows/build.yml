@@ -1,6 +1,6 @@
 name: Build CI
 
-on: [pull_request, push]
+on: [pull_request, push, 'workflow_dispatch']
 
 jobs:
   test:
@@ -20,6 +20,9 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: true
+    - name: update module
+      run: |
+        git submodule update --init --recursive
     - name: Install deps
       run: |
         pip install -r requirements-dev.txt
